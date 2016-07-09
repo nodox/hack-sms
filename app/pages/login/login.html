@@ -16,4 +16,31 @@
 
 <ion-content padding>
 
+	<div text-center>
+		<h2>Login to your account</h2>
+	</div>
+
+	<!-- http://plnkr.co/edit/?p=preview -->
+	<form (ngSubmit)="login()">
+		<ion-list>
+
+			<ion-item>
+				<ion-label fixed>Email Address</ion-label>
+				<ion-input type="text" [(ngModel)]="formData.email"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label fixed>Password</ion-label>
+				<ion-input type="password" [(ngModel)]="formData.password"></ion-input>
+			</ion-item>
+
+		</ion-list>
+		<div padding>
+		  <button block type="submit">Login</button>
+		</div>
+
+	</form>
+
+
+
 </ion-content>
