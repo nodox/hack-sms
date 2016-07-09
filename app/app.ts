@@ -4,6 +4,7 @@ import {StatusBar} from 'ionic-native';
 import {HelloIonicPage} from './pages/hello-ionic/hello-ionic';
 import {ListPage} from './pages/list/list';
 import {LoginPage} from './pages/login/login';
+import * as firebase from 'firebase';
 
 
 
@@ -21,6 +22,7 @@ class MyApp {
     private platform: Platform,
     private menu: MenuController
   ) {
+
     this.initializeApp();
 
     // set our app's pages
@@ -32,6 +34,15 @@ class MyApp {
   }
 
   initializeApp() {
+    const
+        fbConf = {
+        apiKey: "AIzaSyC69ujHgbNIdGP3Ls4UDqaJAw8NU60sLME",
+        authDomain: "hack-sms.firebaseapp.com",
+        databaseURL: "https://hack-sms.firebaseio.com",
+        storageBucket: "hack-sms.appspot.com",
+    };
+    firebase.initializeApp(fbConf);
+    
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
