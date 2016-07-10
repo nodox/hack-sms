@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Http, Response, Headers } from '@angular/http';
 import { NavController } from 'ionic-angular';
 import * as firebase from 'firebase';
 
@@ -13,20 +14,18 @@ import * as firebase from 'firebase';
   templateUrl: 'build/pages/login/login.html',
 })
 export class LoginPage {
-  formData: { email: string, password: string};
+  //formData: { email: string, password: string};
 
 
-  constructor(private nav: NavController) {
-    this.formData = {
-      email: '',
-      password: ''
-    };
+  constructor(private nav: NavController, private http: Http) {
+
+
 
   }
 
 
   login() {
-    console.log(this.formData);
+
   }
 
 }
