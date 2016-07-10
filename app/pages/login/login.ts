@@ -14,17 +14,25 @@ import * as firebase from 'firebase';
   templateUrl: 'build/pages/login/login.html',
 })
 export class LoginPage {
-  //formData: { email: string, password: string};
+  formData: { email: string, password: string};
+  //Ionic: Ionic;
 
 
   constructor(private nav: NavController, private http: Http) {
 
-
+    this.formData = { 
+      email: 'root@root.com', 
+      password: 'rootroot'
+    }
+    //this.Ionic = Ionic;
 
   }
 
 
   login() {
+    firebase.auth().createUserWithEmailAndPassword(this.formData.email, this.formData.password).catch( (err) => {
+      console.log(err);
+    });
 
   }
 
