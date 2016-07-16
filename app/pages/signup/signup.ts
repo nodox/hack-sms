@@ -2,6 +2,11 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import * as firebase from 'firebase';
 
+import {LoginPage} from '../login/login';
+
+
+
+
 /*
   Generated class for the SignupPage page.
 
@@ -32,10 +37,11 @@ export class SignupPage {
     .catch( (err) => {
       console.log(err);
     });
-
-
-    
-  	
   }
+
+  goToLogin() {
+    this.nav.setRoot(LoginPage);
+  }
+
 
 }

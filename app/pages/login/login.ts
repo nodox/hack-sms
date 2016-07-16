@@ -3,7 +3,7 @@ import { Http, Response, Headers } from '@angular/http';
 import { NavController } from 'ionic-angular';
 import * as firebase from 'firebase';
 
-
+import {SignupPage} from '../signup/signup';
 /*
   Generated class for the LoginPage page.
 
@@ -38,6 +38,10 @@ export class LoginPage {
       console.log(err);
     });
 
+  }
+
+  goToSignup() {
+    this.nav.setRoot(SignupPage);
   }
 
 }
