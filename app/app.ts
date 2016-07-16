@@ -1,10 +1,16 @@
 import {Component, ViewChild} from '@angular/core';
+import {disableDeprecatedForms, provideForms } from '@angular/forms';
+
 import {ionicBootstrap, Platform, MenuController, Nav} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {HelloIonicPage} from './pages/hello-ionic/hello-ionic';
+
 import {ListPage} from './pages/list/list';
 import {LoginPage} from './pages/login/login';
 import {SignupPage} from './pages/signup/signup';
+
+import {ChatlobbyPage} from './pages/chatlobby/chatlobby';
+
 import * as firebase from 'firebase';
 
 
@@ -31,7 +37,8 @@ class MyApp {
       { title: 'Hello Ionic', component: HelloIonicPage },
       { title: 'My First List', component: ListPage },
       { title: 'Login', component: LoginPage },
-      { title: 'Signup', component: SignupPage }
+      { title: 'Signup', component: SignupPage },
+      { title: 'Chatlobby', component: ChatlobbyPage },  
     ];
   }
 
@@ -44,6 +51,8 @@ class MyApp {
         storageBucket: "hack-sms.appspot.com",
     };
     firebase.initializeApp(fbConf);
+    disableDeprecatedForms();
+    provideForms();
     
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
