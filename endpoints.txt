@@ -1,0 +1,35 @@
+
+======== Endpoints ========
+
+/user/chatrooms
+/user/chatroom/:id
+/user/friends
+/user/friend/:id
+/user/:id
+
+
+
+======== Models ========
+
+User = {
+	id: string
+	email: string,
+	password: string,
+	friends: Array<User>
+	chatrooms: Array<Chatroom>
+	
+}
+
+
+Chatroom = {
+	chatroomId: string,
+	users: Array<User>,
+	thread: Array<Message>
+}
+
+Message = {
+	msgId: string
+	userId: string,
+	timestamp: Date,
+	text: string
+}

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import * as firebase from 'firebase';
 
+import {ChatlobbyPage} from '../chatlobby/chatlobby';
+
 import {LoginPage} from '../login/login';
 
 
@@ -17,13 +19,14 @@ import {LoginPage} from '../login/login';
   templateUrl: 'build/pages/signup/signup.html',
 })
 export class SignupPage {
+
   formData: { email: string, password: string};
 
 
   constructor(private nav: NavController) {
   	this.formData = { 
-      email: 'root@root.com', 
-      password: 'rootroot'
+      email: '', 
+      password: ''
     }
 
   }
@@ -32,7 +35,21 @@ export class SignupPage {
   	firebase.auth().createUserWithEmailAndPassword(this.formData.email, this.formData.password)
     .then( (data) => {
       console.log(data);
-      console.log('success');
+
+
+      
+      var user = {};
+      user['id'] = data.uid;
+      user['email'] = data.email;
+
+      var dbRef = firebase.database().ref('users/');
+      dbRef.push({
+        id: data.uid,
+        email: data.email
+      });
+
+      this.nav.setRoot(ChatlobbyPage);
+
     })
     .catch( (err) => {
       console.log(err);
