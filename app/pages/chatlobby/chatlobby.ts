@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, Modal } from 'ionic-angular';
 import { ChatroomPage } from '../chatroom/chatroom';
+import { ChatroomCreatePage } from '../chatroom-create/chatroom-create';
+
 
 /*
   Generated class for the ChatlobbyPage page.
@@ -17,7 +19,8 @@ export class ChatlobbyPage {
 
   constructor(private nav: NavController, navParams: NavParams) {
     this.selectedRoom = navParams.get('chatroom');
-    this.chatrooms = [{title: 'hello', name: 'first room'}];
+    //this.chatrooms = [{title: 'hello', name: 'first room'}];
+    this.chatrooms = [];
 
   }
 
@@ -26,5 +29,11 @@ export class ChatlobbyPage {
       chatroom: chatroom
     });
   }
+
+  showModal() {
+    let modal = Modal.create(ChatroomCreatePage);
+    this.nav.present(modal);
+  }
+
 
 }

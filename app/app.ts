@@ -11,6 +11,7 @@ import {SignupPage} from './pages/signup/signup';
 
 import {ChatlobbyPage} from './pages/chatlobby/chatlobby';
 
+
 import * as firebase from 'firebase';
 
 
@@ -38,7 +39,8 @@ class MyApp {
       { title: 'My First List', component: ListPage },
       { title: 'Login', component: LoginPage },
       { title: 'Signup', component: SignupPage },
-      { title: 'Chatlobby', component: ChatlobbyPage },  
+      { title: 'Chatlobby', component: ChatlobbyPage },
+      { title: 'Chatlobby', component: ChatlobbyPage }
     ];
   }
 

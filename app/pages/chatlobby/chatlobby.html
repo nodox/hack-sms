@@ -17,6 +17,7 @@
 
 <ion-content padding>
   <ion-list>
+    <button full (click)="showModal()">Create a room</button>
     <button ion-item *ngFor="let chatroom of chatrooms" (click)="chatroomTapped($event, chatroom)">
       {{chatroom.title}}
     </button>
