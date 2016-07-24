@@ -5,7 +5,7 @@ import * as firebase from 'firebase';
 import {ChatlobbyPage} from '../chatlobby/chatlobby';
 
 import {LoginPage} from '../login/login';
-
+import {UserService} from '../../services/user';
 
 
 
@@ -17,13 +17,14 @@ import {LoginPage} from '../login/login';
 */
 @Component({
   templateUrl: 'build/pages/signup/signup.html',
+  providers: [UserService]
 })
 export class SignupPage {
 
   formData: { email: string, password: string};
 
 
-  constructor(private nav: NavController) {
+  constructor(private nav: NavController, private user: UserService) {
   	this.formData = { 
       email: '', 
       password: ''
@@ -37,10 +38,9 @@ export class SignupPage {
       console.log(data);
 
 
-      
-      var user = {};
-      user['id'] = data.uid;
-      user['email'] = data.email;
+      this.user['userId'] = data.uid;
+      this.user['email'] = data.email;
+
 
       var dbRef = firebase.database().ref('users/');
       dbRef.push({

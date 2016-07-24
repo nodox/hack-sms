@@ -4,6 +4,10 @@ import { NavController } from 'ionic-angular';
 import * as firebase from 'firebase';
 
 import {SignupPage} from '../signup/signup';
+import {ChatlobbyPage} from '../chatlobby/chatlobby';
+
+import {UserService} from '../../services/user';
+
 /*
   Generated class for the LoginPage page.
 
@@ -12,16 +16,17 @@ import {SignupPage} from '../signup/signup';
 */
 @Component({
   templateUrl: 'build/pages/login/login.html',
+  providers: [UserService]
 })
 export class LoginPage {
   formData: { email: string, password: string};
 
 
-  constructor(private nav: NavController, private http: Http) {
+  constructor(private nav: NavController, private user: UserService) {
 
     this.formData = { 
-      email: 'root@root.com', 
-      password: 'rootroot'
+      email: '', 
+      password: ''
     }
 
   }
@@ -31,8 +36,13 @@ export class LoginPage {
 
     firebase.auth().signInWithEmailAndPassword(this.formData.email, this.formData.password)
     .then( (data) => {
+
       console.log(data);
-      console.log('success');
+      this.user['userId'] = data.uid;
+      this.user['email'] = data.email;
+
+      this.nav.setRoot(ChatlobbyPage);
+
     })
     .catch( (err) => {
       console.log(err);
