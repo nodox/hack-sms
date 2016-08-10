@@ -7,14 +7,25 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>chatroom-create</ion-title>
+    <ion-title>Room settings</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-    <button (click)="dismiss()">
-      Cancel
-    </button>
+
+    <form (ngSubmit)="createChatroom()">
+        <ion-list>
+
+            <ion-item>
+                <ion-label fixed>Name</ion-label>
+                <ion-input [(ngModel)]="formData.title" type="text"></ion-input>
+            </ion-item>
+
+        </ion-list>
+        <button type="submit">Create</button>
+    </form>
+
+
 </ion-content>

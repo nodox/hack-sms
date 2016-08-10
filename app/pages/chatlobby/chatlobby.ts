@@ -15,7 +15,7 @@ import { ChatroomCreatePage } from '../chatroom-create/chatroom-create';
 })
 export class ChatlobbyPage {
   selectedRoom: any;
-  chatrooms: Array<{title: string, name: string}>;
+  chatrooms: Array<{title: string}>;
 
   constructor(private nav: NavController, navParams: NavParams) {
     this.selectedRoom = navParams.get('chatroom');
